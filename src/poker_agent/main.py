@@ -4,6 +4,10 @@ import asyncio
 import sys
 from pathlib import Path
 
+# Fix for Windows event loop compatibility with psycopg async
+if sys.platform == "win32":
+    asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
+
 from prompt_toolkit import PromptSession
 from prompt_toolkit.history import FileHistory
 from rich.console import Console
