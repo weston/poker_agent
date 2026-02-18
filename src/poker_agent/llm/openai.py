@@ -62,11 +62,17 @@ class OpenAIProvider(LLMProvider):
                     )
                 )
 
+        # Extract token usage
+        input_tokens = response.usage.prompt_tokens if response.usage else 0
+        output_tokens = response.usage.completion_tokens if response.usage else 0
+
         return Response(
             content=message.content,
             tool_calls=tool_calls,
             raw_response=response,
             finish_reason=response.choices[0].finish_reason,
+            input_tokens=input_tokens,
+            output_tokens=output_tokens,
         )
 
     def format_tool_result(
@@ -98,3 +104,16 @@ class OpenAIProvider(LLMProvider):
                 for tc in response.tool_calls
             ],
         }
+
+    def format_tool_results(
+        self, results: list[tuple[str, str]]
+    ) -> list[dict[str, Any]]:
+        """Format multiple tool results for OpenAI.
+
+        OpenAI expects separate messages for each tool result.
+        Returns a list of message dicts.
+        """
+        return [
+            self.format_tool_result(tool_call_id, result)
+            for tool_call_id, result in results
+        ]

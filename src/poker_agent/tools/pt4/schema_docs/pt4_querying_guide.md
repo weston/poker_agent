@@ -263,19 +263,24 @@ PT4 stores cards as numeric IDs (1-52):
 To decode:
 ```python
 def decode_card(card_id):
-    """Convert PT4 card ID to readable format."""
+    """Convert PT4 card ID to readable format.
+
+    PT4 uses suit-major order: 13 cards per suit, 2-low to A-high.
+    1-13: Clubs, 14-26: Diamonds, 27-39: Hearts, 40-52: Spades
+    """
     if card_id is None or card_id == 0:
         return None
     suits = ['c', 'd', 'h', 's']
-    ranks = ['A', '2', '3', '4', '5', '6', '7', '8', '9', 'T', 'J', 'Q', 'K']
+    ranks = ['2', '3', '4', '5', '6', '7', '8', '9', 'T', 'J', 'Q', 'K', 'A']
     suit_idx = (card_id - 1) // 13
     rank_idx = (card_id - 1) % 13
     return ranks[rank_idx] + suits[suit_idx]
 
 # Examples:
-# 1 → Ac (Ace of clubs)
-# 14 → Ad (Ace of diamonds)
-# 52 → Ks (King of spades)
+# 1 → 2c (Two of clubs)
+# 13 → Ac (Ace of clubs)
+# 14 → 2d (Two of diamonds)
+# 52 → As (Ace of spades)
 ```
 
 ---

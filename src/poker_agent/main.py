@@ -276,27 +276,46 @@ async def main_loop():
                     console.print(f"[yellow]Unknown command: {cmd}[/yellow]")
                 continue
 
-            # Process message
+            # Process message with status display
             console.print()
             response_text = []
 
-            async for chunk in orchestrator.process_message(user_input):
-                if chunk.startswith("\n[Using tool:"):
-                    console.print(f"[dim]{chunk.strip()}[/dim]")
-                else:
-                    response_text.append(chunk)
+            with console.status("[dim]Thinking...[/dim]", spinner="dots") as status:
+                async for chunk in orchestrator.process_message(user_input):
+                    if chunk.startswith("\n[Using tool:"):
+                        # Extract tool name and update status
+                        tool_name = chunk.strip()[1:-1]  # Remove newlines and brackets
+                        status.update(f"[dim]{tool_name}[/dim]")
+                    else:
+                        response_text.append(chunk)
 
-            # Display response as markdown
+            # Display final response as markdown
             if response_text:
                 full_response = "".join(response_text)
                 console.print(Markdown(full_response))
+            else:
+                console.print("[yellow]No response received.[/yellow]")
+
+            # Display context usage
+            usage = orchestrator.get_context_usage()
+            if usage.total_tokens > 0:
+                # Color based on usage level
+                if usage.percentage < 50:
+                    color = "green"
+                elif usage.percentage < 80:
+                    color = "yellow"
+                else:
+                    color = "red"
+                console.print(f"\n[dim][{color}]Context: {usage.percentage:.1f}%[/{color}][/dim]")
 
         except KeyboardInterrupt:
             console.print("\n[dim]Use /quit to exit[/dim]")
         except EOFError:
             break
         except Exception as e:
+            import traceback
             console.print(f"[red]Error: {e}[/red]")
+            console.print(f"[dim]{traceback.format_exc()}[/dim]")
 
 
 def main():

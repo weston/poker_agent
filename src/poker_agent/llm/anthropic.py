@@ -84,6 +84,8 @@ class AnthropicProvider(LLMProvider):
             tool_calls=tool_calls,
             raw_response=response,
             finish_reason=response.stop_reason,
+            input_tokens=response.usage.input_tokens,
+            output_tokens=response.usage.output_tokens,
         )
 
     def format_tool_result(
@@ -100,6 +102,26 @@ class AnthropicProvider(LLMProvider):
                 }
             ],
         }
+
+    def format_tool_results(
+        self, results: list[tuple[str, str]]
+    ) -> list[dict[str, Any]]:
+        """Format multiple tool results into a single message for Anthropic.
+
+        Anthropic requires all tool results in a single user message.
+        Returns a list with one message containing all results.
+        """
+        return [{
+            "role": "user",
+            "content": [
+                {
+                    "type": "tool_result",
+                    "tool_use_id": tool_call_id,
+                    "content": result,
+                }
+                for tool_call_id, result in results
+            ],
+        }]
 
     def format_assistant_tool_calls(
         self, response: Response

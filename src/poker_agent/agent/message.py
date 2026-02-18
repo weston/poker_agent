@@ -23,9 +23,14 @@ class Message:
     tool_call_id: str | None = None
     tool_calls: list[dict[str, Any]] | None = None
     raw_content: Any = None  # For provider-specific content
+    raw_message: dict[str, Any] | None = None  # Complete provider-specific message
 
     def to_dict(self) -> dict[str, Any]:
         """Convert to dictionary for API calls."""
+        # If we have a complete raw message from the provider, use it directly
+        if self.raw_message is not None:
+            return self.raw_message
+
         result: dict[str, Any] = {"role": self.role.value}
 
         if self.raw_content is not None:
@@ -69,16 +74,14 @@ class MessageHistory:
     def add_assistant(
         self,
         content: str | None = None,
-        raw_content: Any = None,
-        tool_calls: list[dict[str, Any]] | None = None,
+        raw_message: dict[str, Any] | None = None,
     ) -> None:
         """Add an assistant message."""
         self.add(
             Message(
                 role=MessageRole.ASSISTANT,
                 content=content or "",
-                raw_content=raw_content,
-                tool_calls=tool_calls,
+                raw_message=raw_message,
             )
         )
 
@@ -86,7 +89,7 @@ class MessageHistory:
         self,
         tool_call_id: str,
         content: str,
-        raw_content: Any = None,
+        raw_message: dict[str, Any] | None = None,
     ) -> None:
         """Add a tool result message."""
         self.add(
@@ -94,7 +97,7 @@ class MessageHistory:
                 role=MessageRole.TOOL,
                 content=content,
                 tool_call_id=tool_call_id,
-                raw_content=raw_content,
+                raw_message=raw_message,
             )
         )
 

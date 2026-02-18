@@ -60,11 +60,11 @@ def decode_card(card_id: int | None) -> str | None:
     """
     Convert PT4 card ID to readable format.
 
-    PT4 encodes cards as 1-52:
-    - 1-13: Clubs (A, 2, 3, ..., K)
-    - 14-26: Diamonds
-    - 27-39: Hearts
-    - 40-52: Spades
+    PT4 encodes cards as 1-52 in suit-major order (13 cards per suit, 2-low):
+    - 1-13: Clubs (2c, 3c, 4c, ..., Ac)
+    - 14-26: Diamonds (2d, 3d, ..., Ad)
+    - 27-39: Hearts (2h, 3h, ..., Ah)
+    - 40-52: Spades (2s, 3s, ..., As)
 
     Args:
         card_id: PT4 card ID (1-52)
@@ -74,13 +74,13 @@ def decode_card(card_id: int | None) -> str | None:
 
     Examples:
         >>> decode_card(1)
+        '2c'
+        >>> decode_card(13)
         'Ac'
         >>> decode_card(14)
-        'Ad'
-        >>> decode_card(27)
-        'Ah'
+        '2d'
         >>> decode_card(52)
-        'Ks'
+        'As'
     """
     if card_id is None or card_id == 0:
         return None
@@ -88,7 +88,7 @@ def decode_card(card_id: int | None) -> str | None:
         return None
 
     suits = ["c", "d", "h", "s"]
-    ranks = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "T", "J", "Q", "K"]
+    ranks = ["2", "3", "4", "5", "6", "7", "8", "9", "T", "J", "Q", "K", "A"]
 
     suit_idx = (card_id - 1) // 13
     rank_idx = (card_id - 1) % 13

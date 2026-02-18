@@ -53,3 +53,4 @@ Thumbs.db
 .poker_agent/
 .claude/
 nul
+test_output*.txt
