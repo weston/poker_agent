@@ -1,0 +1,456 @@
+===Hand Stats===
+All-in:
+	flg_allin
+	A check indicates that the player was all-in at some point in the hand.
+	
+All-in Equity:
+	val_allin_equity * 100.0
+	Equity in the pot that a player had at the time the all-in occurred in the hand.  This value is blank if an all-in did not occur in the hand.
+	
+All-in Equity Adjusted BB:
+	amt_expected_bb_won
+	Expected amount of money that a player would have won from this hand in big blinds if, at the time of the all-in, players were returned their equity in the pot instead of running out any remaining cards. Note: This value will be the same as BB Won for all hands where there was either no all-in, or the all-in occurred on the river.
+	
+BB Won
+amt_bb_won
+Number of big blinds won in the given hand by the player.
+
+BB Won (Including Payouts)
+amt_bb_won_inc_payout
+Number of big blinds won in the given hand by the player.  Payouts are included in the amount won calculations.
+
+Big Blind
+flg_blind_b
+A check indicates that the player in the hand was in the big blind.
+
+Board
+lookup_cards(id_flop1, id_flop2, id_flop3, id_turn, id_river)
+Displays any or all of the community cards from the hand.
+
+Chips in BBs
+amt_chips / amt_bb
+Number of chips the player started the hand with in terms of big blinds.
+
+Cold Call 2Bet PF
+flg_p_ccall
+A check indicates that the player cold called a 2Bet preflop.  An open box indicates that the player could have cold called a 2Bet preflop but elected not to.
+
+Date
+date_played
+Date the hand was played (calculated using the player statistics database table).
+
+Date Summary
+date_played_summary
+Date the hand was played (calculated using the hand summary database table).
+
+Dead Blind
+flg_blind_db or flg_blind_ds
+A check indicates that the player posted a dead large or small blind during the hand.
+
+Final Hand
+lookup_handrankval(id_final_hand, flg_showed, enum_folded)
+Displays the strength of the final hand that a player held when the hand went to showdown, or why the hand was not shown.
+
+Flop Action
+str_actions_f
+Displays the action that the player took in the hand on the flop.  Each action is represented by a letter: X = Check, B = Bet, C = Call, F = Fold, R = Raise.
+
+Flop Call
+flg_f_call
+A check indicates that the player called a bet or raise on the flop.  An open box indicates that the player could have called a bet or raise on the flop but elected not to.
+
+Flop Cards
+lookup_cards_sort(id_flop1, id_flop2, id_flop3)
+Displays the three flop cards from the hand if they were dealt graphically according to your theme.
+
+Flop Check
+flg_f_check
+A check indicates that the player checked on the flop.  An open box indicates that the player had a chance to check on the flop but elected not to.
+
+Flop Check Raise
+flg_check_raise_f
+A check indicates that the player checked and then raised on the flop.  An open box indicates that the player checked and had a chance to raise on the flop but elected not to.
+
+Flop Donk
+flg_f_donk
+A check indicates that the player donk bet on the flop.  An open box indicates that the player could have donk bet on the flop but elected not to.
+
+Flop Float
+flg_f_float
+A check indicates that the player float bet on the flop.  An open box indicates that the player could have float bet on the flop but elected not to.
+
+Flop Fold
+flg_f_fold
+A check indicates that the player folded on the flop.  An open box indicates that the player had a chance to fold on the flop.
+
+Flop Raise
+flg_f_raise
+A check indicates that the player raised on the flop.  An open box indicates that the player had a chance to raise on the flop.
+
+Flop SPR
+amt_spr_f
+When the player saw the flop, the ratio of the player's starting stack size at the start of the flop to the size of the pot at that time.
+
+Game Currency All-In Equity Adjusted
+amt_expected_won
+Expected amount of money that a player would have won from this hand in the currency the hand was played if, at the time of the all-in, players were returned their equity in the pot instead of running out any remaining cards. Note: This value will be the same as Amount Won for all hands where there was either no all-in, or the all-in occurred on the river.
+
+Game Currency Amount in Stack
+amt_chips
+Total amount of money the player started the hand with in the originaly currency the hand was played.
+
+Game Currency Bet Flop
+amt_bet_f
+Total amount of money bet by the player on the flop in the hand in the original currency the hand was played.
+
+Game Currency Bet Preflop
+amt_bet_p
+Amount of money bet by the player preflop in the hand in the original currency the hand was played.
+
+Game Currency Bet River
+amt_bet_r
+Total amount of money bet by the player on the river in the hand in the original currency the hand was played.
+
+Game Currency Bet Turn
+amt_bet_t
+Total amount of money bet by the player on the turn in the hand in the original currency the hand was played.
+
+Game Currency Jackpot
+amt_jackpot
+Total amount of jackpot fee that was taken out of the hand in the currency the hand was originally played.
+
+Game Currency Payout
+amt_payout
+Total amount of payout received in the hand in the currency the hand was originally played.
+
+Game Currency Payout Fee
+amt_payout_fee
+Total amount of payout fees paid in the hand in the currency the hand was originally played.
+
+Game Currency Player Rake
+amt_rake_player
+Total amount of rake that was paid by the player who won the hand in the currency the hand was originally played.
+
+Game Currency Pot Size
+amt_pot
+Total amount of money that was in the pot in hand in the currency the hand was originally played.
+
+Game Currency Rake
+amt_rake
+Total amount of rake that was taken out of the hand in the currency the hand was originally played.
+
+Game Currency Rake Contributed
+amt_rake_weighted_contributed
+Total amount of money removed from the pot as rake divided porportionately by the amount of money the player contributed to the pot.
+
+Game Currency Rake Share
+amt_rake_share
+Total amount of money removed from the pot as rake divided by the number of players dealt into the hand calculated in the currency the hand was originally played.
+
+Game Currency Straddle
+amt_straddle
+Total amount of straddle placed in the hand in the currency the hand was originally played.
+
+Game Currency Won
+amt_won
+Amount of money won in the given hand in the original currency the hand was played.
+
+Game Currency Won (Including Payouts)
+amt_won_inc_payout
+Amount of money won in the given hand in the original currency the hand was played.  Payouts are included in the amount won calculations.
+
+Game Type
+id_gametype
+Game that was played - Holdem or Omaha (calculated using the player statistics database table).
+
+Game Type Summary
+id_gametype_summary
+Game that was played - Holdem or Omaha (calculated using the hand summary database table).
+
+Hand
+id_holecard
+Player's starting hand displayed in text notation (for example: 43o, J8s, etc.)
+
+Hand #
+hand_no
+Number of the hand that was played.
+
+Hole Cards
+lookup_cards_sort(id_holecard1, id_holecard2, id_holecard3, id_holecard4)
+Player's starting hand displayed graphically according to your theme.
+
+Made Hand
+if( id_holecard1=0, 10, if ( flg_r_saw, val_r_hand_group, if ( flg_t_saw, val_t_hand_group, if ( flg_f_saw, val_f_hand_group, 10 ))))
+Displays the player's best made hand that they had at any point during the hand.
+
+Made Hand Flop
+if ( flg_f_saw=false OR id_holecard1=0, 10, val_f_hand_group )
+Displays the player's hand strength on the flop.
+
+Made Hand River
+if ( flg_r_saw=false OR id_holecard1=0, 10, val_r_hand_group )
+Displays the player's hand strength on the river.
+
+Made Hand Turn
+if ( flg_t_saw=false OR id_holecard1=0, 10, val_t_hand_group )
+Displays the player's hand strength on the turn.
+
+Marked
+'{IMG:' + if( flg_note, 'Icons/note_hi.png,', '' ) + if( flg_tag, tag_image_list( id_hand, false, flg_tag ), '') + '}'
+Displays any mark that exists on the hand.
+
+My Currency All-In Equity Adjusted
+amt_expected_won_curr_conv
+Expected amount of money that a player would have won from this hand in the preferred currency if, at the time of the all-in, players were returned their equity in the pot instead of running out any remaining cards. Note: This value will be the same as Currency Won for all hands where there was either no all-in, or the all-in occurred on the river.
+
+My Currency Amount in Stack
+amt_chips
+Total amount of money the player started the hand with in the preferred currency set in PokerTracker.
+
+My Currency Bet Flop
+amt_bet_f_curr_conv
+Total amount of money bet by the player on the flop in the hand displayed in the preferred currency set in PokerTracker.
+
+My Currency Bet Preflop
+amt_bet_p_curr_conv
+Amount of money bet by the player preflop in the hand displayed in the preferred currency set in PokerTracker.
+
+My Currency Bet River
+amt_bet_r_curr_conv
+Total amount of money bet by the player on the river in the hand displayed in the preferred currency set in PokerTracker.
+
+My Currency Bet Turn
+amt_bet_t_curr_conv
+Total amount of money bet by the player on the turn in the hand displayed in the preferred currency set in PokerTracker.
+
+My Currency Jackpot
+amt_jackpot_curr_conv
+Total amount of jackpot fee that was taken out of the hand in the preferred currency set in PokerTracker.
+
+My Currency Payout
+amt_payout_curr_conv
+Total amount of payout received in the hand in the preferred currency set in PokerTracker.
+
+My Currency Payout Fee
+amt_payout_fee_curr_conv
+Total amount of payout fees paid in the hand in the preferred currency set in PokerTracker.
+
+My Currency Pot Size
+amt_pot_curr_conv
+Total amount of money that was in the pot in the hand displayed in the preferred currency set in PokerTracker
+
+My Currency Rake
+amt_rake_curr_conv
+Total amount of rake that was taken out of the hand in the preferred currency set in PokerTracker.
+
+My Currency Rake Contributed
+amt_rake_weighted_contributed_curr_conv
+Total amount of money removed from the pot as rake divided porportionately by the amount of money the player contributed to the pot displayed in the international preferred currency set in PokerTracker.
+
+My Currency Rake Player
+amt_rake_player_curr_conv
+Total amount of rake that was paid by the player who won the hand in the preferred currency set in PokerTracker.
+
+My Currency Rake Share
+amt_rake_share_curr_conv
+Total amount of money removed from the pot as rake divided by the number of players dealt into the hand calculated in the preferred currency set in PokerTracker.
+
+My Currency Straddle
+amt_straddle_curr_conv
+Total amount of straddle placed in the hand in the currency the hand was originally played.
+
+My Currency Won
+amt_won_curr_conv
+Amount of money won in the given hand dsplayed in the international preferred currency set in PokerTracker.
+
+My Currency Won (Including Payouts)
+amt_won_inc_payout_curr_conv
+Amount of money won in the given hand dsplayed in the international preferred currency set in PokerTracker.  Payouts are included in the amount won calculations.
+
+Player
+str_player
+Player's screen name at the table for the hand in question
+
+Position
+val_position_type
+Displays the position the player was in the hand.
+
+Position (Full Ring)
+val_position_abs
+Displays the position the player was in the hand.
+
+Pot Size (BBs)
+amt_pot / amt_bb
+Total amount of money that was in the pot in the hand calculated in Big Blinds.
+
+Preflop Action
+str_actions_p
+Displays the action that the player took in the hand preflop.  Each action is represented by a letter: X = Check, B = Bet, C = Call, F = Fold, R = Raise.
+
+Preflop Action Facing Player
+val_p_action_facing
+Summarizes the actions the other players in the had made before the player had a chance to act.
+
+Preflop Raise
+flg_p_raise
+A check indicates that the player raised preflop.  An open box indicates that the player did not raise preflop.
+
+Preflop SPR
+amt_spr_p
+Ratio of the player's starting stack size to the size of the starting pot.
+
+Preflop Squeeze
+flg_p_squeeze
+A check indicates that the player made a squeeze raise preflop.  An open box indicates that the player could have made a squeeze raise preflop but elected not to.
+
+River Action
+str_actions_r
+Displays the action that the player took in the hand on the river.  Each action is represented by a letter: X = Check, B = Bet, C = Call, F = Fold, R = Raise.
+
+River Call
+flg_r_call
+A check indicates that the player called a bet or raise on the river.  An open box indicates that the player could have called a bet or raise on the river but elected not to.
+
+River Card
+lookup_cards_sort(id_river)
+Displays the river card graphically according to your theme.
+
+River Check
+flg_r_check
+A check indicates that the player checked on the river.  An open box indicates that the player had a chance to check on the river but elected not to.
+
+River Check Raise
+flg_check_raise_r
+A check indicates that the player checked and then raised on the river.  An open box indicates that the player checked and had a chance to raise on the riverbut elected not to.
+
+River Donk
+flg_r_donk
+A check indicates that the player donk bet on the river.  An open box indicates that the player could have donk bet on the river but elected not to.
+
+River Float
+flg_r_float
+A check indicates that the player float bet on the river.  An open box indicates that the player could have float bet on the river but elected not to.
+
+River Fold
+flg_r_fold
+A check indicates that the player folded on the river.  An open box indicates that the player had a chance to fold on the river.
+
+River Probe
+flg_r_probe
+A check indicates that the player probe bet on the river.  An open box indicates that the player could have probe bet on the river but elected not to.
+
+River Raise
+flg_r_raise
+A check indicates that the player raised on the river.  An open box indicates that the player had a chance to raise on the river.
+
+River SPR
+amt_spr_r
+When the player saw the river, the ratio of the player's starting stack size at the start of the river to the size of the pot at that time.
+
+Saw Flop
+flg_f_saw
+A check indicates that the player saw the flop.  An open box indicates that they did not.
+
+Saw River
+flg_r_saw
+A check indicates that the player saw the river.  An open box indicates that they did not.
+
+Saw Turn
+flg_t_saw
+A check indicates that the player saw the turn.  An open box indicates that they did not.
+
+Seat
+seat
+Seat in which the player was seated at the table.  Note that this is the absolute seat number, not relative to the button location.
+
+Site
+id_site
+Displays the text abbreviation for the site at which the hand was played.
+
+Site Icon
+lookup_from_id(id_site, 'sitedisplayname')
+Displays the icon for the site at which the hand was played.
+
+Small Blind
+flg_blind_s
+A check indicates that the player was in the small blind.  An open box indicates that they were not.
+
+Stake
+id_limit
+Stake at which the hand was played.
+
+Stake Summary
+id_limit_summary
+Stake at which the hand was played.
+
+Table
+str_table
+Displays the name of the table at which the hand was played.
+
+Time
+date_played
+Time that the hand was played (calculated using the player statistics database table).
+
+Time Summary
+date_played_summary
+Time that the hand was played (calculated using the hand summary database table).
+
+Turn Action
+str_actions_t
+Displays the action that the player took in the hand on the turn.  Each action is represented by a letter: X = Check, B = Bet, C = Call, F = Fold, R = Raise.
+
+Turn Call
+flg_t_call
+A check indicates that the player called a bet or raise on the turn.  An open box indicates that the player could have called a bet or raise on the turn but elected not to.
+
+Turn Card
+lookup_cards_sort(id_turn)
+Displays the turn card graphically according to your theme.
+
+Turn Check
+flg_t_check
+A check indicates that the player checked on the turn.  An open box indicates that the player had a chance to check on the turn but elected not to.
+
+Turn Check Raise
+flg_check_raise_t
+A check indicates that the player checked and then raised on the turn.  An open box indicates that the player checked and had a chance to raise on the turn but elected not to.
+
+Turn Donk
+flg_t_donk
+A check indicates that the player donk bet on the turn.  An open box indicates that the player could have donk bet on the turn but elected not to.
+
+Turn Float
+flg_t_float
+A check indicates that the player float bet on the turn.  An open box indicates that the player could have float bet on the turn but elected not to.
+
+Turn Fold
+flg_t_fold
+A check indicates that the player folded on the turn.  An open box indicates that the player had a chance to fold on the turn.
+
+Turn Probe
+flg_t_probe
+A check indicates that the player probe bet on the turn.  An open box indicates that the player could have probe bet on the turn but elected not to.
+
+Turn Raise
+flg_t_raise
+A check indicates that the player raised on the turn.  An open box indicates that the player had a chance to raise on the turn.
+
+Turn SPR
+amt_spr_t
+When the player saw the turn, the ratio of the player's starting stack size at the start of the turn to the size of the pot at that time.
+
+Winner
+str_winner
+Displays the screen name of the player who won the hand.  Displays ""[Split Pot]"" when the pot was split.
+
+Winner Lo
+str_winner_lo
+Displays the screen name of the player who won the low hand, if there was one, or ""[No Low Winner]"".  Displays ""[Split Pot]"" when the low pot was split.
+
+Winning Hand
+id_win_hand
+Displays the hand strength of the winning hand, if it was shown.  If it was not shown, displays that the hand was not shown.
+
+Winning Hand Lo
+id_win_hand_lo
+Displays the hand strength of the winning low hand, if it was shown.  If it was not shown, displays that the hand was not shown.
